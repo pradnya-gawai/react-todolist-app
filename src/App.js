@@ -2,9 +2,20 @@ import React , {useState} from 'react';
 import './App.css';
 
 const App=() => {
+  //created hook element
   const [inputList,setInputList]=useState("");
+  // created hook of arry
+  const [item,setItem]=useState([]);
   const itemEvent= (event) =>{
     setInputList(event.target.value);
+  };
+
+  // spread data 
+  const listOfItem = ()=>{
+    setItem((oldItems)=>{
+      return[...oldItems,inputList];
+
+    });
   };
   return (
     <>
@@ -14,9 +25,13 @@ const App=() => {
         <h1>To Do List</h1>
         <br/>
         <input type="text" placeholder="Add a item" onChange={itemEvent}/>
-        <button>X</button>
+        <button onClick={listOfItem}>X</button>
         <ol>
-          <li>{inputList}</li>
+          {item.map((itemval)=>
+          {
+            return  <li>{itemval}</li>
+
+          })}
         </ol>
         
 
