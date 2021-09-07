@@ -1,5 +1,13 @@
 const ToDoLists = (props) =>
 {
-    return (<li >{props.text}</li>);
+    return (
+    <>
+        <div class="todo_styles">
+        <button>x</button>
+        <li >{props.text}</li>
+        </div>
+    </>
+    
+    );
 }
 export  default ToDoLists;
