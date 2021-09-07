@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import './App.css';
+import ToDoLists from './ToDoLists';
 
 const App=() => {
   //created hook element
@@ -20,6 +21,16 @@ const App=() => {
     });
     setInputList('');
   };
+  const deleteItems = (id)=>
+  {
+        console.log("deleted");
+        setItem((oldItems)=>{
+          return oldItems.filter((arrElem,index)=>{
+            return index!==id
+
+          });
+        });
+    };
   return (
     <>
     <div className="main-div">
@@ -32,11 +43,15 @@ const App=() => {
         value={inputList}/>
         <button onClick={listOfItem}>X</button>
         <ol>
-          {item.map((itemval)=>
+          {item.map((itemval,index)=>
           {
-            return  <li>{itemval}</li>
+            return <ToDoLists text={itemval}
+            key={index}
+            id={index}
+            onSelect={deleteItems}/>
 
-          })}
+          })
+          }
         </ol>
         
 
