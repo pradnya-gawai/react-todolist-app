@@ -2,8 +2,10 @@ import React , {useState} from 'react';
 import './App.css';
 
 const App=() => {
-  const [inputList,setInputList]=useState("buy Tomato");
-  const itemEvent= () =>{};
+  const [inputList,setInputList]=useState("");
+  const itemEvent= (event) =>{
+    setInputList(event.target.value);
+  };
   return (
     <>
     <div className="main-div">
