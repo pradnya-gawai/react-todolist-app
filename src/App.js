@@ -7,7 +7,9 @@ const App=() => {
   // created hook of arry
   const [item,setItem]=useState([]);
   const itemEvent= (event) =>{
+    
     setInputList(event.target.value);
+    
   };
 
   // spread data 
@@ -16,6 +18,7 @@ const App=() => {
       return[...oldItems,inputList];
 
     });
+    setInputList('');
   };
   return (
     <>
@@ -24,7 +27,9 @@ const App=() => {
         <br/>
         <h1>To Do List</h1>
         <br/>
-        <input type="text" placeholder="Add a item" onChange={itemEvent}/>
+        <input type="text" placeholder="Add a item" 
+        onChange={itemEvent}
+        value={inputList}/>
         <button onClick={listOfItem}>X</button>
         <ol>
           {item.map((itemval)=>
